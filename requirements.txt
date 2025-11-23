@@ -1,0 +1,11 @@
+paho-mqtt
+RPi.GPIO
+adafruit-blinka
+adafruit-circuitpython-dht
+adafruit-circuitpython-bh1750
+smbus2
+websockets
+aiortc
+pyserial
+#versiones pra evi conflc
+av<15.0.0

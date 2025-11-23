@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard del Rover de Monitoreo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Rover de Monitoreo Ambiental</h1>
+            <div class="mode-switcher">
+                <span>Manual</span>
+                <label class="switch">
+                    <input type="checkbox" id="mode-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Automático</span>
+            </div>
+        </header>
+
+        <main>
+            <section id="video-container">
+                <h2>Streaming de Video</h2>
+                <video id="remote-video" autoplay playsinline muted></video>
+            </section>
+
+            <section id="radar-section">
+                <h2>Radar de Proximidad</h2>
+                <div id="radar-container">
+                    <canvas id="radar-canvas" width="400" height="220"></canvas>
+                </div>
+            </section>
+
+            <section id="manual-controls-section" class="manual-mode-item">
+                <h2>Controles Manuales</h2>
+                <div id="manual-controls-container">
+                    <div class="controls-grid">
+                        <button id="btn-forward" class="grid-item-forward">▲</button>
+                        <button id="btn-left" class="grid-item-left">◄</button>
+                        <button id="btn-center" class="grid-item-center">✜</button> <button id="btn-right" class="grid-item-right">►</button>
+                        <button id="btn-stop" class="grid-item-stop">STOP</button> <button id="btn-backward" class="grid-item-backward">▼</button>
+                    </div>  
+                </div>
+            </section>
+            
+            <section id="auto-mode-section" class="auto-mode-item" style="display: none;">
+                <h2>Modo Automático</h2>
+                <p>El rover está operando de forma autónoma, evitando obstáculos.</p>
+            </section>
+
+            <section id="environment-data-container">
+                <h2>Datos Ambientales</h2>
+                <div class="data-grid">
+                    <div class="sensor-card">
+                        <h3>Temperatura</h3>
+                        <p><span id="temp-data">--</span> °C</p>
+                    </div>
+                    <div class="sensor-card">
+                        <h3>Humedad</h3>
+                        <p><span id="humidity-data">--</span> %</p>
+                    </div>
+                    <div class="sensor-card">
+                        <h3>Calidad de Aire</h3>
+                        <p id="air-quality-data">--</p>
+                    </div>
+                    <div class="sensor-card">
+                        <h3>Sensor de Humo</h3>
+                        <p id="smoke-data">--</p>
+                    </div>
+                    <div class="sensor-card">
+                        <h3>Luminosidad</h3>
+                        <p><span id="light-data">--</span> Lux</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Estado MQTT: <span id="mqtt-status">Desconectado</span></p>
+            <p>Estado Video: <span id="video-status">Esperando...</span></p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/mqtt@5.7.0/dist/mqtt.min.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
